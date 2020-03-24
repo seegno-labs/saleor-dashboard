@@ -24,6 +24,7 @@ import useSearchQuery from "@saleor/hooks/useSearchQuery";
 import { buttonMessages } from "@saleor/intl";
 import { maybe, renderCollection } from "@saleor/misc";
 import { FetchMoreProps } from "@saleor/types";
+import useModalDialogOpen from "@saleor/hooks/useModalDialogOpen";
 import {
   SearchOrderVariant_search_edges_node,
   SearchOrderVariant_search_edges_node_variants
@@ -170,6 +171,10 @@ const OrderProductAddDialog: React.FC<OrderProductAddDialogProps> = props => {
   const [variants, setVariants] = React.useState<
     SearchOrderVariant_search_edges_node_variants[]
   >([]);
+
+  useModalDialogOpen(open, {
+    onClose: () => setVariants([])
+  });
 
   const selectedVariantsToProductsMap = products
     ? products.map(product =>
