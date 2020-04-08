@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sed -i "s/localhost:8000/$API_URI/g" dashboard/dashboard.*.js
+sed -i "s,http://localhost:8000/graphql/,$API_URI,g" dashboard/dashboard.*.js
 
 exec "$@"
